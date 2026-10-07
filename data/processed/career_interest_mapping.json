@@ -1,0 +1,225 @@
+{
+  "Data Scientist": {
+    "Technology": 0.21428571428571427,
+    "Data Science": 0.35714285714285715,
+    "Finance": 0.14285714285714285,
+    "Marketing": 0.14285714285714285,
+    "Communications": 0.14285714285714285
+  },
+  "Software Engineer": {
+    "Software Development": 0.20833333333333334,
+    "AI": 0.16666666666666666,
+    "Software Engineering": 0.041666666666666664,
+    "Coding": 0.08333333333333333,
+    "Technology": 0.16666666666666666,
+    "Gaming": 0.08333333333333333,
+    "Arts": 0.08333333333333333,
+    "Digital Media": 0.08333333333333333,
+    "Cybersecurity": 0.08333333333333333
+  },
+  "UX Designer": {
+    "Arts": 0.16666666666666666,
+    "Digital Media": 0.2222222222222222,
+    "Design": 0.3333333333333333,
+    "Technology": 0.05555555555555555,
+    "Web Development": 0.2222222222222222
+  },
+  "AI Researcher": {
+    "Healthcare": 0.5,
+    "AI": 0.5
+  },
+  "Project Manager": {
+    "Business": 0.375,
+    "Management": 0.375,
+    "Academia": 0.125,
+    "Research": 0.125
+  },
+  "Embedded Systems Engineer": {
+    "Electronics": 0.3,
+    "Automation": 0.3,
+    "Finance": 0.2,
+    "Analytics": 0.2
+  },
+  "Data Analyst": {
+    "Finance": 0.14285714285714285,
+    "Analytics": 0.19047619047619047,
+    "Data Analysis": 0.047619047619047616,
+    "Statistics": 0.047619047619047616,
+    "Business": 0.07142857142857142,
+    "Data Analytics": 0.023809523809523808,
+    "Marketing": 0.09523809523809523,
+    "Communications": 0.09523809523809523,
+    "Healthcare": 0.047619047619047616,
+    "AI": 0.047619047619047616,
+    "Technology": 0.09523809523809523,
+    "Data Science": 0.047619047619047616,
+    "Cybersecurity": 0.047619047619047616
+  },
+  "Digital Marketer": {
+    "Marketing": 0.25,
+    "Communications": 0.08333333333333333,
+    "Social Media": 0.08333333333333333,
+    "Business": 0.08333333333333333,
+    "Cybersecurity": 0.08333333333333333,
+    "Technology": 0.08333333333333333,
+    "Finance": 0.08333333333333333,
+    "Analytics": 0.08333333333333333,
+    "Software Development": 0.08333333333333333,
+    "AI": 0.08333333333333333
+  },
+  "NLP Engineer": {
+    "Linguistics": 0.2,
+    "Technology": 0.2,
+    "AI": 0.1,
+    "Language": 0.1,
+    "Academia": 0.2,
+    "Research": 0.2
+  },
+  "Financial Analyst": {
+    "Finance": 0.25,
+    "Data Analysis": 0.1875,
+    "Data Science": 0.0625,
+    "Web Development": 0.125,
+    "Design": 0.125,
+    "Arts": 0.125,
+    "Digital Media": 0.125
+  },
+  "Research Scientist": {
+    "Academia": 0.3333333333333333,
+    "Biotech": 0.3333333333333333,
+    "Technology": 0.16666666666666666,
+    "Data Science": 0.16666666666666666
+  },
+  "Frontend Developer": {
+    "Web Development": 0.2,
+    "Design": 0.2,
+    "Web Design": 0.1,
+    "Technology": 0.1,
+    "Software Development": 0.2,
+    "AI": 0.2
+  },
+  "ML Engineer": {
+    "Technology": 0.3125,
+    "Innovation": 0.25,
+    "AI": 0.0625,
+    "Business": 0.125,
+    "Management": 0.125,
+    "Data Science": 0.125
+  },
+  "Marketing Manager": {
+    "Marketing": 0.25,
+    "Business": 0.25,
+    "Software Development": 0.25,
+    "AI": 0.25
+  },
+  "Full Stack Developer": {
+    "Web Development": 0.25,
+    "Technology": 0.25,
+    "Arts": 0.25,
+    "Digital Media": 0.25
+  },
+  "AI Specialist": {
+    "Healthcare": 0.5,
+    "AI": 0.5
+  },
+  "Cybersecurity Analyst": {
+    "Cybersecurity": 0.14285714285714285,
+    "Technology": 0.21428571428571427,
+    "Security": 0.07142857142857142,
+    "Business": 0.14285714285714285,
+    "Management": 0.14285714285714285,
+    "Marketing": 0.14285714285714285,
+    "Communications": 0.14285714285714285
+  },
+  "Research Analyst": {
+    "Academia": 0.25,
+    "Research": 0.25,
+    "Finance": 0.25,
+    "Analytics": 0.25
+  },
+  "DevOps Engineer": {
+    "Technology": 0.25,
+    "Business": 0.25,
+    "Marketing": 0.25,
+    "Communications": 0.25
+  },
+  "Graphic Designer": {
+    "Digital Media": 0.041666666666666664,
+    "Marketing": 0.041666666666666664,
+    "Arts": 0.20833333333333334,
+    "Design": 0.2916666666666667,
+    "Cybersecurity": 0.08333333333333333,
+    "Technology": 0.08333333333333333,
+    "Healthcare": 0.08333333333333333,
+    "AI": 0.08333333333333333,
+    "Web Development": 0.08333333333333333
+  },
+  "Deep Learning Engineer": {
+    "Technology": 0.16666666666666666,
+    "Research": 0.5,
+    "Academia": 0.3333333333333333
+  },
+  "Business Analyst": {
+    "Business": 0.21428571428571427,
+    "Analytics": 0.07142857142857142,
+    "Finance": 0.14285714285714285,
+    "Web Development": 0.14285714285714285,
+    "Design": 0.14285714285714285,
+    "Cybersecurity": 0.14285714285714285,
+    "Technology": 0.14285714285714285
+  },
+  "Backend Developer": {
+    "Software Engineering": 0.25,
+    "Finance": 0.125,
+    "Technology": 0.375,
+    "Data Science": 0.25
+  },
+  "Biostatistician": {
+    "Biotech": 0.25,
+    "Data Science": 0.25,
+    "Arts": 0.25,
+    "Digital Media": 0.25
+  },
+  "Data Engineer": {
+    "Finance": 0.25,
+    "Technology": 0.25,
+    "Business": 0.25,
+    "Management": 0.25
+  },
+  "Content Strategist": {
+    "Marketing": 0.25,
+    "Content": 0.125,
+    "Media": 0.125,
+    "Finance": 0.125,
+    "Analytics": 0.125,
+    "Healthcare": 0.125,
+    "AI": 0.125
+  },
+  "Automation Engineer": {
+    "Technology": 0.25,
+    "Engineering": 0.25,
+    "Academia": 0.25,
+    "Research": 0.25
+  },
+  "Mobile Developer": {
+    "Mobile Apps": 0.25,
+    "Technology": 0.25,
+    "Business": 0.25,
+    "Management": 0.25
+  },
+  "UX Researcher": {
+    "Design": 0.25,
+    "User Experience": 0.25,
+    "Finance": 0.25,
+    "Analytics": 0.25
+  },
+  "Cloud Engineer": {
+    "Technology": 0.25,
+    "Business": 0.25,
+    "Academia": 0.25,
+    "Research": 0.25
+  },
+  "_metadata": {
+    "low_sample_careers": []
+  }
+}

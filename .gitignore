@@ -1,0 +1,13 @@
+.env
+*.joblib
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.hypothesis/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.ipynb_checkpoints
