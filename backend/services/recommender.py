@@ -140,19 +140,17 @@ class RecommenderService:
         interests: list[str],
     ) -> list[CareerRecommendation]:
         """
-        Return top-5 career recommendations sorted by final_score descending.
+        Return top-5 career recommendations sorted by matching skill count
+        (descending), then by final_score (descending) as a tiebreaker.
 
         Steps
         -----
         1. Get top-10 ML predictions via predict_top_k.
         2. For each candidate career compute interest_score and final_score.
-        3. Run skill-gap analysis per career.
-        4. Sort by final_score descending and return top 5.
-
-        Postcondition
-        -------------
-        len(result) <= 5 and final_scores are non-increasing (Property 10,
-        Requirement 4.5).
+        3. Run skill-gap analysis per career (BEFORE ranking).
+        4. Sort primarily by number of matching skills (highest first),
+           then by final_score descending as a tiebreaker.
+        5. Return top 5.
 
         Parameters
         ----------
@@ -176,29 +174,49 @@ class RecommenderService:
             k=10,
         )
 
-        # Step 2: score and rank
+        # Step 2: score, skill-gap analysis, and collect all info upfront
         candidates = []
         for career, model_prob in ml_results:
             interest_score = self.compute_interest_score(career, interests)
             final_score = self.compute_final_score(model_prob, interest_score)
-            candidates.append((career, model_prob, interest_score, final_score))
 
-        candidates.sort(key=lambda x: x[3], reverse=True)
+            # Run skill-gap analysis BEFORE ranking so we can sort by it
+            gap = self._skill_gap.analyze(career, skills)
+
+            candidates.append({
+                "career": career,
+                "model_probability": model_prob,
+                "interest_score": interest_score,
+                "final_score": final_score,
+                "required_skills": gap.required_skills,
+                "missing_skills": gap.missing_skills,
+                "matching_skills": gap.matching_skills,
+            })
+
+        # Filter out careers with final_score below 5% confidence threshold
+        candidates = [c for c in candidates if c["final_score"] >= 0.05]
+
+        # Step 3: Sort by matching skill count (highest first), then
+        # final_score (highest first) as tiebreaker
+        candidates.sort(
+            key=lambda c: (len(c["matching_skills"]), c["final_score"]),
+            reverse=True,
+        )
+
         top5 = candidates[:5]
 
-        # Step 3: skill-gap analysis + build output
+        # Step 4: Build output with correct ranks
         recommendations = []
-        for rank, (career, model_prob, interest_score, final_score) in enumerate(top5, start=1):
-            gap = self._skill_gap.analyze(career, skills)
+        for rank, c in enumerate(top5, start=1):
             recommendations.append(CareerRecommendation(
                 rank=rank,
-                career=career,
-                model_probability=model_prob,
-                interest_score=interest_score,
-                final_score=final_score,
-                required_skills=gap.required_skills,
-                missing_skills=gap.missing_skills,
-                matching_skills=gap.matching_skills,
+                career=c["career"],
+                model_probability=c["model_probability"],
+                interest_score=c["interest_score"],
+                final_score=c["final_score"],
+                required_skills=c["required_skills"],
+                missing_skills=c["missing_skills"],
+                matching_skills=c["matching_skills"],
             ))
 
         return recommendations

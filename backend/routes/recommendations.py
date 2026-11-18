@@ -29,6 +29,8 @@ from backend.schemas.recommendation import (
     RecommendationRequest,
     RecommendationResponse,
 )
+from backend.dependencies.auth import get_optional_user
+from backend.models.database_models import User as UserModel
 from utils.preprocessing import normalize_skills_list
 
 logger = logging.getLogger(__name__)
@@ -62,6 +64,7 @@ def recommend(
     body: RecommendationRequest,
     request: Request,
     db: Session = Depends(get_db),
+    current_user: UserModel | None = Depends(get_optional_user),
 ) -> RecommendationResponse:
     """
     Generate top-5 personalized career recommendations.
@@ -111,7 +114,7 @@ def recommend(
     # Persist history — fire-and-forget (Requirement 8.2)
     try:
         history = RecommendationHistory(
-            user_id=None,
+            user_id=current_user.id if current_user else None,
             input_snapshot=body.model_dump(),
             recommendations_snapshot=response.model_dump(),
         )

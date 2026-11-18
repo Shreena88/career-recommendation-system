@@ -19,10 +19,14 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from backend.config import get_settings
-from backend.routes import recommendations, users
+from backend.database import Base, engine
+from backend.routes import auth, recommendations, users
 from backend.services.predictor import MLPredictor
 from backend.services.recommender import RecommenderService
 from backend.services.skill_gap import SkillGapService
+
+# Ensure all models are imported so Base.metadata knows about them
+import backend.models.database_models  # noqa: F401
 
 logger = logging.getLogger(__name__)
 settings = get_settings()
@@ -43,6 +47,10 @@ INTEREST_MAP_PATH = os.path.join(_PROJECT_ROOT, "data", "processed", "career_int
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Load all ML artifacts and services at startup (Requirements 3.1, 3.2)."""
+    # Create database tables (non-destructive — uses CREATE IF NOT EXISTS)
+    logger.info("Ensuring database tables exist…")
+    Base.metadata.create_all(bind=engine)
+
     logger.info("Loading ML artifacts from %s ...", MODEL_DIR)
 
     predictor = MLPredictor(model_dir=MODEL_DIR)
@@ -79,5 +87,16 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(auth.router)
 app.include_router(recommendations.router)
 app.include_router(users.router)
